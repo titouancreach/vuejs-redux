@@ -11,6 +11,7 @@ Why it's good:
   - Same api as react-redux.
   - Combine multiple connect to be hydrated from multiple sources.
   - No hard coded dependencies between 'Vue' and the store, so more composable.
+  - 0 dependency
 
 // TODO
 Check if events can be passed up through the parent
