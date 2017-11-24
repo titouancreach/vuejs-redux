@@ -1,9 +1,33 @@
 {
   "name": "vuejs-redux",
   "version": "1.0.0",
+  "scripts": {
+    "test": "jest"
+  },
   "description": "Simple but functional binding between vuejs and redux",
   "main": "index.js",
   "repository": "https://github.com/titouancreach/redux-vuejs",
   "author": "Titouan CREACH <titouan.creach@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-jest": "^21.2.0",
+    "jest": "^21.2.1",
+    "redux": "^3.7.2",
+    "vue": "^2.5.8",
+    "vue-jest": "^1.1.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "vue"
+    ]
+  },
+  "transform": {
+    "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+    ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
+  },
+  "dependencies": {
+    "@babel/core": "^7.0.0-beta.32",
+    "@babel/preset-env": "^7.0.0-beta.32"
+  }
 }
