@@ -1,4 +1,4 @@
-# redux-vuejs
+# vuejs-redux
 
 Simple binding between Vue and Redux.
 This allow to use multiple store if needed.
