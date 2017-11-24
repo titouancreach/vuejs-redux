@@ -1,4 +1,5 @@
 # vuejs-redux
+[![npm version](https://badge.fury.io/js/vuejs-redux.svg)](https://badge.fury.io/js/vuejs-redux)
 
 Simple binding between Vue and Redux.
 This allow to use multiple store if needed.
