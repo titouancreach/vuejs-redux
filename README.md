@@ -98,7 +98,11 @@ export default
 or 
 
 ```
-const f = compose(connect(store2)(mapStateToProps2, mapDispatchToProps2), connect(store)(mapStateToProps, mapDispatchToProps));
+const f = compose(
+  connect(store2)(mapStateToProps2, mapDispatchToProps2), 
+  connect(store)(mapStateToProps, mapDispatchToProps)
+);
+
 export default f(Child);
 ```
 
