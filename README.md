@@ -2,19 +2,19 @@
 
 Simple binding between Vue and Redux.
 This allow to use multiple store if needed.
-This binding is inpired by react-redux.
+This binding is inpired by [react-redux](https://github.com/reactjs/react-redux).
 This work in inserting a Proxy component that is able to pass down the state, existing props and bounded actions to the child component.
 
-Why it's good:
+Why you should use it:
 
   - 37 lines of code (Easy to read/understand), easy to extend.
-  - Same api as react-redux.
+  - Same API as ̀[react-redux](https://github.com/reactjs/react-redux).
   - Combine multiple connect to be hydrated from multiple sources.
   - No hard coded dependencies between 'Vue' and the store, so more composable.
   - 0 dependency
-
-// TODO
-Check if events can be passed up through the parent
+  - Not polluated `data`
+  
+I'm aware that we should use one store to manage the whole state of our app. But in some specific cases, we need multi store.
 
 exemple:
 
@@ -35,9 +35,8 @@ const store = createStore(reducer);
 
 // like redux, create mapStateToProps and mapDispatchToProps
 // the role of mapStateToProps is to map a part of the state to the child props.
-// (maybe reselect or something like that would be good)
 
-// here map all the store
+// return an object where the keys are the prop name passed down to the child with its value.
 function mapStateToProps(state) {
   return { propName: state };
 }
@@ -52,7 +51,7 @@ function dummyAction2() {
 }
 
 
-// since we don't want to have a store instance into or component,
+// since we don't want to have a store instance into our component,
 // we bind our actions with the dispatch function.
 
 function mapDispatchToProps(dispatch) {
@@ -78,7 +77,7 @@ export default {
 
 ```
 
-Since the proxy component pass down the props to the child, we can create multiple proxy in order for the child to be hydrated by differents sources.
+Since the proxy component pass down the props to the child, we can create multiple ̀`proxy component` in order for the child to be hydrated with different sources.
 
 ```
 export default
