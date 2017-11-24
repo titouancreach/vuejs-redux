@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import { createStore, bindActionCreators } from 'redux';
-import connect from '../index.js';
+import { connect } from '../index.js';
 import testComponent from './test.vue';
 
 test('Test wrapper component', () => {

@@ -1,5 +1,5 @@
 
-export default function connect(store) {
+export function connect(store) {
   return (mapStateToProps, mapDispatchToProps) => children => ({
 
     data: () => ({
