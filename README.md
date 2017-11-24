@@ -86,6 +86,13 @@ export default
     connect(store)(mapStateToProps, mapDispatchToProps)(Child));
 ```
 
+or 
+
+```
+const f = compose(connect(store2)(mapStateToProps2, mapDispatchToProps2), connect(store)(mapStateToProps, mapDispatchToProps));
+export default f(Child);
+```
+
 
 
 
