@@ -20,9 +20,11 @@ I'm aware that we should use one store to manage the whole state of our app. But
   
 # Install
   
+  ```
   npm install --save vuejs-redux
+  ```
 
-# exemple
+# Example
 
 ComponentContainer.js
 
