@@ -70,8 +70,13 @@ export default {
   props: ['actions', 'propName'],
 
   mounted() {
-    this.actions.dummy1(); // action available
     this.propName; // contain our state
+    this.actions.dummy1(); // action available
+    
+    // state is updated when props change (e.g when component is re-render
+    this.$nextTick(() => {
+      this.propName; // <- here
+    });
   }
 }
 
