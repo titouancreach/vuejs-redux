@@ -3,7 +3,7 @@
 Simple binding between Vue and Redux.
 This allow to use multiple store if needed.
 This binding is inpired by [react-redux](https://github.com/reactjs/react-redux).
-This work in inserting a Proxy component that is able to pass down the state, existing props and bounded actions to the child component.
+This work in inserting a High Order Component that is able to pass down the state, existing props and bounded actions to the child component.
 
 Why you should use it:
 
@@ -87,7 +87,7 @@ export default {
 
 ```
 
-Since the proxy component pass down the props to the child, we can create multiple ̀`proxy component` in order for the child to be hydrated with different sources.
+Since the High Order Component pass down the props to the child, we can create multiple ̀`High Order Component` in order for the child to be hydrated with different sources.
 
 ```
 export default
