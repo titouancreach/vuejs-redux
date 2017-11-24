@@ -14,9 +14,14 @@ Why you should use it:
   - 0 dependency
   - Not polluated `data`
   
-I'm aware that we should use one store to manage the whole state of our app. But in some specific cases, we need multi store.
 
-exemple:
+I'm aware that we should use one store to manage the whole state of our app. But in some specific cases, we need multi store.
+  
+# Install
+  
+  npm install --save vuejs-redux
+
+# exemple
 
 ComponentContainer.js
 
