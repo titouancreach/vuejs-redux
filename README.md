@@ -109,7 +109,7 @@ const f = compose(
 export default f(Child);
 ```
 
-If you don't want to export the store you wan simply currying the connect method
+If you don't want to export the store you can simply currying the connect method
 
 ```
 const store = createStore(...); 
