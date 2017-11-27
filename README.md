@@ -2,7 +2,7 @@
 [![npm version](https://badge.fury.io/js/vuejs-redux.svg)](https://badge.fury.io/js/vuejs-redux)
 
 Simple binding between Vue and Redux.
-This allow to use multiple store if needed.
+This allows to use multiple store if needed.
 This binding is inpired by [react-redux](https://github.com/reactjs/react-redux).
 This work in inserting a High Order Component that is able to pass down the state, existing props and bounded actions to the child component.
 
@@ -13,84 +13,100 @@ Why you should use it:
   - Combine multiple connect to be hydrated from multiple sources.
   - No hard coded dependencies between 'Vue' and the store, so more composable.
   - 0 dependency
-  - Not polluated `data`
-  
-
-I'm aware that we should use one store to manage the whole state of our app. But in some specific cases, we need multi store.
-  
+  - Not polluated `data` (you can use the power of the `functional component`)
+    
 # Install
   
   ```
   npm install --save vuejs-redux
   ```
 
-# Example
+# Counter example
 
-ComponentContainer.js
+Let's build a simple counter app. (The full code can be found in the `example/` directory.
+
+Start with our reducer:
+
+```javascript
+export function counter(state = 0, action) {
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + 1;
+    case 'DECREMENT':
+      return state - 1;
+    case 'RESET':
+      return 0;
+    default:
+      return state;
+  }
+}
+```
+ And create the action creators in order to update our state.
+
+```javascript
+export function increment() {
+  return { 'type': 'INCREMENT' };
+}
+
+export function decrement() {
+  return { 'type': 'DECREMENT' };
+}
+
+export function reset() {
+  return { type: 'RESET' }
+}
+```
+
+We can now create the CounterContainer Component. This is the High Order component that act as a proxy for our Counter component.
 
 ```javascript
 import { createStore, bindActionCreators } from 'redux';
+import { connect } from '../../../../bundle.js';
+import * as Actions from '../Actions';
+import Counter from './Counter.vue';
+import { counter } from '../Reducers/Counter';
 
-import ChildComponent from 'child';
-
-// for the exemple purpose, create dummy reducer and dummy store here.
-
-function reducer(state = { foo: 'bar' }, action) {
-  return state;
-}
-
-const store = createStore(reducer);
-
-// like redux, create mapStateToProps and mapDispatchToProps
-// the role of mapStateToProps is to map a part of the state to the child props.
-
-// return an object where the keys are the prop name passed down to the child with its value.
+// Map the state to the key "counterValue"
 function mapStateToProps(state) {
-  return { propName: state };
+  return { counterValue: state };
 }
 
-// create our actions here (or import them from an other file)
-function dummyAction1() {
-  return { type: 'DUMMY1' };
-}
-
-function dummyAction2() {
-  return { type: 'DUMMY2' };
-}
-
-
-// since we don't want to have a store instance into our component,
-// we bind our actions with the dispatch function.
-
+// Bind the our action with the dispatch method and map them to the key "actions".
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators({ dummy1, dummy2 }, dispatch);
+  return { actions: bindActionCreators(Actions, dispatch) };
 }
 
-export default connect(store)(mapStateToProps, mapDispatchToProps)(Child);
+const store = createStore(counter);
+
+export default connect(store)(mapStateToProps, mapDispatchToProps)(Counter);
 ```
 
-and our child
+And finally our Counter component.
 
 ```vue
+<template functional> <!-- we can use functional component -->
+  <div>
+    <h1> Counter using vuejs-redux </h1>
+    <div> {{ counterValue }} </div>
+    <button @click="actions.increment()"> increment </button>
+    <button @click="actions.decrement()"> decrement </button>
+    <button @click="actions.reset()"> reset </button>
+  </div>
+</template>
 
-
-export default {
-  props: ['actions', 'propName'],
-
-  mounted() {
-    this.propName; // contain our state
-    this.actions.dummy1(); // action available
-    
-    // state is updated when props change (e.g when component is re-render
-    this.$nextTick(() => {
-      this.propName; // <- here
-    });
-  }
-}
-
+<script>
+  export default {
+    props: ['actions', 'counterValue'] // provided by vuejs-redux
+  };
+</script>
 ```
 
-Since the High Order Component pass down the props to the child, we can create multiple ̀`High Order Component` in order for the child to be hydrated with different sources.
+Our Counter component is not aware we are using redux.
+
+# Multiple store
+
+
+Since the High Order Component pass down the props to the child, we can compose multiple `High Order Component` in order for the child to be hydrated with different sources.
 
 ```
 export default
@@ -109,12 +125,12 @@ const f = compose(
 export default f(Child);
 ```
 
-If you don't want to export the store you can simply currying the connect method
+If you don't have an access to the store in your Container components, you can simply curry the connect function:
 
 ```
 const store = createStore(...); 
 export default connect(store);
 ```
-and voilà
+and voilà, you should be abe to use `connect(mapStateToProps, mapDispatchToProps)(Child)` directly.
 
 
