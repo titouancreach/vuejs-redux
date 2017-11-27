@@ -103,3 +103,37 @@ test('Test if a scoped slots are passed', () => {
   expect(vm.$children[0].$children[0].$el.textContent.trim()).toBe('vuejs-redux');
   expect(vm.$children[0].$children[0].$slots.default).toBeTruthy();
 });
+
+test('All scope with composed connect', () => {
+
+  // create dummy store
+  const reducer = (state = {}) => state;
+  const store = createStore(reducer);
+  const store2 = createStore(reducer);
+  const mapStateToProps = (state) => ({});
+  const mapDispatchToProps = (dispatch) => ({});
+
+  // Child component with a slot in
+  const testComponentWithSlot = {
+    template: '<div><slot></slot><slot name="myname"></slot><slot name="myscoped" text="vuejs-redux"></slot></div>'
+  };
+
+  // create our highOrderComponent
+  const highOrderComponent = connect(store2)(mapStateToProps, mapDispatchToProps)(connect(store)(mapStateToProps, mapDispatchToProps)(testComponentWithSlot));
+
+  // Render our high order component with a div (which should be considered as the default slot
+  const vm = new Vue({
+    template: `
+        <high-order-component>
+          <div></div>
+          <div slot="myname"></div>
+          <div slot="myscoped" slot-scope="props" id="test">{{ props.text }}</div>
+        </high-order-component>`,
+    components: {
+      highOrderComponent
+    }
+  }).$mount();
+
+  expect(vm.$children[0].$children[0].$children[0].$el.textContent.trim()).toBe('vuejs-redux');
+  expect(vm.$children[0].$children[0].$children[0].$slots.default).toBeTruthy();
+});
