@@ -133,4 +133,8 @@ export default connect(store);
 ```
 and voilà, you should be abe to use `connect(mapStateToProps, mapDispatchToProps)(Child)` directly.
 
+# CONTRIBUTING
+
+Feel free to create issues or pull request if needed.
+
 
