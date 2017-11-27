@@ -9,7 +9,7 @@ This work in inserting a High Order Component that is able to pass down the stat
 Why you should use it:
 
   - 37 lines of code (Easy to read/understand), easy to extend.
-  - Same API as ̀[react-redux](https://github.com/reactjs/react-redux).
+  - Same API as [react-redux](https://github.com/reactjs/react-redux).
   - Combine multiple connect to be hydrated from multiple sources.
   - No hard coded dependencies between 'Vue' and the store, so more composable.
   - 0 dependency
