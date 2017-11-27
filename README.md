@@ -135,6 +135,6 @@ and voilà, you should be abe to use `connect(mapStateToProps, mapDispatchToProp
 
 # CONTRIBUTING
 
-Feel free to create issues or pull request if needed.
+Feel free to create issues or pull requests if needed.
 
 
