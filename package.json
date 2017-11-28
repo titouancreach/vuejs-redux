@@ -33,6 +33,5 @@
     ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
   },
   "dependencies": {
-    "babel-cli": "^6.26.0"
   }
 }
