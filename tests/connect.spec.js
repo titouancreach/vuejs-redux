@@ -137,3 +137,75 @@ test('All scope with composed connect', () => {
   expect(vm.$children[0].$children[0].$children[0].$el.textContent.trim()).toBe('vuejs-redux');
   expect(vm.$children[0].$children[0].$children[0].$slots.default).toBeTruthy();
 });
+
+
+test('default mapStateToProps and mapDispatchToProps default parameter', () => {
+  const reducer = (state = {}) => state;
+  const store = createStore(reducer);
+  const child = {
+    template: '<div></div>'
+  };
+  const highOrderComponent = connect(store)()(child);
+  const vm = new Vue({
+    render: h => h(highOrderComponent),
+    components: {
+      highOrderComponent
+    }
+  }).$mount();
+  expect(vm.$children[0].$attrs).toEqual({});
+})
+
+test('default mapStateToProps and mapDispatchToProps default parameter', () => {
+  const reducer = (state = {}) => state;
+  const store = createStore(reducer);
+  const child = {
+    template: '<div></div>'
+  };
+  const highOrderComponent = connect(store)(null, null)(child);
+  const vm = new Vue({
+    render: h => h(highOrderComponent),
+    components: {
+      highOrderComponent
+    }
+  }).$mount();
+  expect(vm.$children[0].$children[0].$attrs).toEqual({});
+});
+
+
+test('default mapStateToProps parameter', () => {
+  const reducer = (state = {}) => state;
+  const store = createStore(reducer);
+  const actionCreator = { foo: () => ({}) };
+  const dispatchDispatchToProps = dispatch => ({ actions: bindActionCreators(actionCreator) })
+  const child = {
+    template: '<div></div>',
+    props: ['actions']
+  };
+  const highOrderComponent = connect(store)(null, dispatchDispatchToProps)(child);
+  const vm = new Vue({
+    render: h => h(highOrderComponent),
+    components: {
+      highOrderComponent
+    }
+  }).$mount();
+  expect(vm.$children[0].$children[0].actions).not.toEqual({});
+});
+
+
+test('default mapDispatchToProps parameter', () => {
+  const reducer = (state = {}) => state;
+  const store = createStore(reducer);
+  const mapStateToProps = state => ({ myState: state });
+  const child = {
+    template: '<div></div>',
+    props: ['myState']
+  };
+  const highOrderComponent = connect(store)(mapStateToProps)(child);
+  const vm = new Vue({
+    render: h => h(highOrderComponent),
+    components: {
+      highOrderComponent
+    }
+  }).$mount();
+  expect(vm.$children[0].$children[0].myState).toEqual({});
+});
