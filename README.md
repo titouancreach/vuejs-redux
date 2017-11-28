@@ -4,17 +4,18 @@
 Simple binding between Vue and Redux.
 This allows to use multiple store if needed.
 This binding is inpired by [react-redux](https://github.com/reactjs/react-redux).
-This work in inserting a High Order Component that is able to pass down the state, existing props and bounded actions to the child component.
+This work in inserting a High Order Component (a.k.a HOC) that is able to pass down the state, existing props and bounded actions to the child component.
 
 Why you should use it:
 
-  - 48 lines of code (Easy to read/understand), easy to extend.
+  - 57 lines of code (Easy to read/understand), easy to extend.
   - Same API as [react-redux](https://github.com/reactjs/react-redux).
   - Combine multiple connect to be hydrated from multiple sources.
   - No hard coded dependencies between 'Vue' and the store, so more composable.
   - 0 dependency
   - Not polluated `data` (you can use the power of the `functional component`)
   - Support slots/named slots/scoped slots
+  - Support Vue events
     
 # Install
   
@@ -107,7 +108,7 @@ Our Counter component is not aware we are using redux.
 # Multiple store
 
 
-Since the High Order Component pass down the props to the child, we can compose multiple `High Order Component` in order for the child to be hydrated with different sources.
+Since the High Order Component pass down the props to the child, we can compose multiple `HOC` in order for the child to be hydrated with different sources.
 
 ```
 export default
