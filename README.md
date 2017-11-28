@@ -21,6 +21,13 @@ Why you should use it:
   npm install --save vuejs-redux
   ```
 
+# V1.1.0
+A new version is in progress. It includes:
+  - Slots (default/named/scoped) (see [issue](https://github.com/titouancreach/vuejs-redux/issues/6))
+  - Default value for `mapStateToProps` and `mapDispatchToProps`
+  - More unit tests
+  - Linter/Prettier
+
 # Counter example
 
 Let's build a simple counter app. (The full code can be found in the `example/` directory.
