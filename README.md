@@ -27,6 +27,7 @@ A new version is in progress. It includes:
   - Default value for `mapStateToProps` and `mapDispatchToProps`
   - More unit tests
   - Linter/Prettier
+  - The build is now included in git and allows: `vuejs-redux: "titouancreach/vuejs-redux#1.1.0"` in package.json.
 
 # Counter example
 
