@@ -1,6 +1,6 @@
 {
   "name": "vuejs-redux",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "scripts": {
     "test": "NODE_ENV=testing jest && jest",
     "build": "NODE_ENV=production && ./node_modules/.bin/rollup --config rollup.config.js",
@@ -33,6 +33,5 @@
     ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
   },
   "dependencies": {
-    "babel-cli": "^6.26.0"
   }
 }
