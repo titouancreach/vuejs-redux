@@ -20,6 +20,9 @@ export function connect(store) {
       }),
 
       created() {
+        if (this.$parent) {
+          this.$createElement = this.$parent.$createElement;
+        }
         this.unsubscribe = store.subscribe(() => {
           this.state = validMapStateToProps(store.getState());
         });
@@ -40,6 +43,12 @@ export function connect(store) {
             scopedSlots: {
             ...this.$scopedSlots,
             },
+            on: {
+              ...this.$listeners
+            },
+            props: {
+              ...this.$props
+            }
           }, Object.values(this.$slots),
         );
       },

@@ -21,6 +21,9 @@ function connect(store) {
       }),
 
       created() {
+        if (this.$parent) {
+          this.$createElement = this.$parent.$createElement;
+        }
         this.unsubscribe = store.subscribe(() => {
           this.state = validMapStateToProps(store.getState());
         });
@@ -33,7 +36,9 @@ function connect(store) {
       render(h) {
         return h(children, {
           attrs: _extends({}, this.actions, this.state, this.$attrs),
-          scopedSlots: _extends({}, this.$scopedSlots)
+          scopedSlots: _extends({}, this.$scopedSlots),
+          on: _extends({}, this.$listeners),
+          props: _extends({}, this.$props)
         }, Object.values(this.$slots));
       }
     };

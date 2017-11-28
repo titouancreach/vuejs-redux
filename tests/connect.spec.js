@@ -68,7 +68,7 @@ test('Test if a named slots are passed', () => {
     }
   }).$mount();
 
-  expect(vm.$children[0].$children[0].$slots.default).toBeTruthy();
+  expect(vm.$children[0].$children[0].$slots.myname).toBeTruthy();
 });
 
 test('Test if a scoped slots are passed', () => {
@@ -101,6 +101,8 @@ test('Test if a scoped slots are passed', () => {
   }).$mount();
 
   expect(vm.$children[0].$children[0].$el.textContent.trim()).toBe('vuejs-redux');
+  expect(vm.$children[0].$children[0].$slots.myname).toBeTruthy();
+  expect(vm.$children[0].$children[0].$scopedSlots.myscoped).toBeTruthy();
   expect(vm.$children[0].$children[0].$slots.default).toBeTruthy();
 });
 
@@ -136,6 +138,8 @@ test('All scope with composed connect', () => {
 
   expect(vm.$children[0].$children[0].$children[0].$el.textContent.trim()).toBe('vuejs-redux');
   expect(vm.$children[0].$children[0].$children[0].$slots.default).toBeTruthy();
+  expect(vm.$children[0].$children[0].$children[0].$slots.myname).toBeTruthy();
+  expect(vm.$children[0].$children[0].$children[0].$scopedSlots.myscoped).toBeTruthy();
 });
 
 
