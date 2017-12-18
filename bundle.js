@@ -1,48 +1,46 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-const defaultMapStateToProps = () => ({});
-const defaultMapDispatchToProps = () => ({});
+var index = {
 
-function connect(store) {
-  return (mapStateToProps, mapDispatchToProps) => children => {
+  props: {
+    mapDispatchToProps: {
+      required: false,
+      default: () => ({}),
+      type: Function
+    },
 
-    const validMapStateToProps = mapStateToProps || defaultMapStateToProps;
-    const validDispatchToProps = mapDispatchToProps || defaultMapDispatchToProps;
+    mapStateToProps: {
+      required: false,
+      default: () => ({}),
+      type: Function
+    },
 
-    return {
+    store: {
+      required: true,
+      type: Object
+    }
+  },
 
-      data: () => ({
-        state: _extends({}, validMapStateToProps(store.getState())),
-        actions: _extends({}, validDispatchToProps(store.dispatch))
-      }),
+  data: ctx => ({
+    state: _extends({}, ctx.mapStateToProps(ctx.store.getState())),
+    actions: _extends({}, ctx.mapDispatchToProps(ctx.store.dispatch))
+  }),
 
-      created() {
-        if (this.$parent) {
-          this.$createElement = this.$parent.$createElement;
-        }
-        this.unsubscribe = store.subscribe(() => {
-          this.state = validMapStateToProps(store.getState());
-        });
-      },
+  created() {
+    this.unsubscribe = this.store.subscribe(() => {
+      this.state = this.mapStateToProps(this.store.getState());
+    });
+  },
 
-      destroyed() {
-        this.unsubscribe();
-      },
+  destroyed() {
+    this.unsubscribe();
+  },
 
-      render(h) {
-        return h(children, {
-          attrs: _extends({}, this.actions, this.state, this.$attrs),
-          scopedSlots: _extends({}, this.$scopedSlots),
-          on: _extends({}, this.$listeners),
-          props: _extends({}, this.$props)
-        }, Object.values(this.$slots));
-      }
-    };
-  };
-}
+  render() {
+    return this.$scopedSlots.default(_extends({}, this.actions, this.state))[0];
+  }
+};
 
-exports.connect = connect;
+module.exports = index;

@@ -1,7 +1,7 @@
 import Vue from 'vue';
-import Counter from './Components/CounterContainer';
+import CounterProvider from './Components/CounterProvider.vue';
 
 new Vue({
-  components: { Counter },
-  render: h => h(Counter)
+  components: {CounterProvider},
+  render: h => h(CounterProvider)
 }).$mount('#app');

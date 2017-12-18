@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1> Counter using vuejs-redux </h1>
+    <h1> {{ title }} </h1>
     <div> {{ counterValue }} </div>
     <button @click="actions.increment()"> increment </button>
     <button @click="actions.decrement()"> decrement </button>
@@ -10,7 +10,7 @@
 
 <script>
   export default {
-    props: ['actions', 'counterValue']
+    props: ['actions', 'counterValue', 'title']
   };
 </script>
 
