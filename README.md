@@ -66,7 +66,7 @@ export function reset() {
 
 We can now create the CounterProvider Component. It act as a Provider for our CounterComponent
 
-```html
+```vue
 <template>
   <Provider :mapDispatchToProps="mapDispatchToProps" :mapStateToProps="mapStateToProps" :store="store">
     <template slot-scope="{counterValue, actions}"> <!-- We our state via slot-scope. Passing down the props to the component is no more hidden -->
@@ -134,7 +134,7 @@ Our Counter component is not aware we are using redux.
 You can combine multiple store if needed. Just use the Provider component multiple time.
 You can obviously create an helper component or whatever to compose this.
 
-```
+```vue
 <template>
   <Provider
     :store=storeOne
