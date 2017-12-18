@@ -1,6 +1,10 @@
 # vuejs-redux
 [![npm version](https://badge.fury.io/js/vuejs-redux.svg)](https://badge.fury.io/js/vuejs-redux)
 
+Important:
+I would like to update this plugin using render props: [my article about it](https://medium.com/@titouan.creach_44544/emulate-render-props-in-vuejs-c14086dc8dfa)
+I don't know if someone use this plugin excluding me...) If so, tell me, I'll let this repo unchanged and create a new one.
+
 Simple binding between Vue and Redux.
 This allows to use multiple store if needed.
 This binding is inpired by [react-redux](https://github.com/reactjs/react-redux).
