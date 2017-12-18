@@ -20,6 +20,7 @@ Why you should use it:
   - 0 dependency
   - Not polluated `data` (you can use the power of the `functional component`)
   - Debuggable in the vue devtool browser extension.
+  - Elegant JSX syntax
 
     
 # Install
