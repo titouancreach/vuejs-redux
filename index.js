@@ -1,4 +1,3 @@
-
 export default {
 
   props: {
@@ -28,7 +27,6 @@ export default {
       ...ctx.mapDispatchToProps(ctx.store.dispatch),
     },
   }),
-
 
   created() {
     this.unsubscribe = this.store.subscribe(() => {

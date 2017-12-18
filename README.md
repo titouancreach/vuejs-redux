@@ -8,19 +8,23 @@ I don't know if someone use this plugin excluding me...) If so, tell me, I'll le
 ## Description
 Simple binding between Vue and Redux.
 This allows to use multiple store if needed.
-This binding is inpired by [react-redux](https://github.com/reactjs/react-redux).
-This work in inserting a High Order Component (a.k.a HOC) that is able to pass down the state, existing props and bounded actions to the child component.
+This work in the same way as render props in react. It use Scoped Slot. read [my article about it](https://medium.com/@titouan.creach_44544/emulate-render-props-in-vuejs-c14086dc8dfa)
+
+Note:
+The previous version was using HOC. This version use Scoped slots instead.
+No more magic with the connect methods. Everything is explicit. It will prevent props collision
+and a [ugly trick with the render function](https://github.com/vuejs/vue/issues/6201).
 
 Why you should use it:
 
-  - 57 lines of code (Easy to read/understand), easy to extend.
+  - 45 lines of code (Easy to read/understand), easy to extend.
   - Same API as [react-redux](https://github.com/reactjs/react-redux).
-  - Combine multiple connect to be hydrated from multiple sources.
+  - Combine multiple Provider to be hydrated from multiple sources.
   - No hard coded dependencies between 'Vue' and the store, so more composable.
   - 0 dependency
   - Not polluated `data` (you can use the power of the `functional component`)
-  - Support slots/named slots/scoped slots
-  - Support Vue events
+  - Debuggable in the vue devtool browser extension.
+
     
 # Install
   
@@ -64,28 +68,47 @@ export function reset() {
 }
 ```
 
-We can now create the CounterContainer Component. This is the High Order component that act as a proxy for our Counter component.
+We can now create the CounterProvider Component. It act as a Provider for our CounterComponent
 
+```html
+<template>
+  <Provider :mapDispatchToProps="mapDispatchToProps" :mapStateToProps="mapStateToProps" :store="store">
+    <template slot-scope="{counterValue, actions}"> <!-- We our state via slot-scope. Passing down the props to the component is no more hidden -->
+      <Counter :counterValue="counterValue" :actions="actions" :title="title" /> <!-- explicitly pass other props (title) -->
+    </template>
+  </Provider>
+</template>
+```
 ```javascript
 import { createStore, bindActionCreators } from 'redux';
-import { connect } from '../../../../bundle.js';
+import Provider from 'vuejs-redux';
 import * as Actions from '../Actions';
 import Counter from './Counter.vue';
 import { counter } from '../Reducers/Counter';
 
-// Map the state to the key "counterValue"
-function mapStateToProps(state) {
-  return { counterValue: state };
+export default {
+
+  methods: {
+    mapStateToProps(state) {
+      return {counterValue: state}
+    },
+
+    mapDispatchToProps(dispatch) {
+      return {actions: bindActionCreators(Actions, dispatch)}
+    }
+  },
+
+  components: {
+    Counter,
+    Provider
+  },
+
+  data: () => ({
+    store: createStore(counter),
+    title: 'Counter using vuejs-redux'
+  })
+
 }
-
-// Bind the our action with the dispatch method and map them to the key "actions".
-function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators(Actions, dispatch) };
-}
-
-const store = createStore(counter);
-
-export default connect(store)(mapStateToProps, mapDispatchToProps)(Counter);
 ```
 
 And finally our Counter component.
@@ -103,7 +126,7 @@ And finally our Counter component.
 
 <script>
   export default {
-    props: ['actions', 'counterValue'] // provided by vuejs-redux
+    props: ['actions', 'counterValue'] // provided by our Provider
   };
 </script>
 ```
@@ -112,33 +135,31 @@ Our Counter component is not aware we are using redux.
 
 # Multiple store
 
-
-Since the High Order Component pass down the props to the child, we can compose multiple `HOC` in order for the child to be hydrated with different sources.
-
-```
-export default
-  connect(store2)(mapStateToProps2, mapDispatchToProps2)(
-    connect(store)(mapStateToProps, mapDispatchToProps)(Child));
-```
-
-or 
+You can combine multiple store if needed. Just use the Provider component multiple time.
+You can obviously create an helper component or whatever to compose this.
 
 ```
-const f = compose(
-  connect(store2)(mapStateToProps2, mapDispatchToProps2), 
-  connect(store)(mapStateToProps, mapDispatchToProps)
-);
-
-export default f(Child);
+<template>
+  <Provider
+    :store=storeOne
+    :mapStateToProps=mapStateToPropsOne
+    :mapDispatchToProps=mapDispatchToPropsOne>
+      <template slot-scope="{myStateOne, myActionOne}">
+        <!-- Use our second provider -->
+        <Provider
+          :store=storeTwo
+          :mapStateToProps=mapStateToPropsTwo
+          :mapDispatchToProps=mapDispatchToPropsTwo>
+          <template slot-scope="{myStateTwo, myActionTwo"}>
+            <!-- render our component here -->
+            <Child :stateOne=myStateOne :stateTwo=myStateTwo .../>
+          </template>
+        </Provider>
+      </template>
+    </Provider
+</template>
 ```
 
-If you don't have an access to the store in your Container components, you can simply curry the connect function:
-
-```
-const store = createStore(...); 
-export default connect(store);
-```
-and voilà, you should be abe to use `connect(mapStateToProps, mapDispatchToProps)(Child)` directly.
 
 # CONTRIBUTING
 
