@@ -146,7 +146,7 @@ You can obviously create an helper component or whatever to compose this.
           :store=storeTwo
           :mapStateToProps=mapStateToPropsTwo
           :mapDispatchToProps=mapDispatchToPropsTwo>
-          <template slot-scope="{myStateTwo, myActionTwo"}>
+          <template slot-scope="{myStateTwo, myActionTwo}">
             <!-- render our component here -->
             <Child :stateOne=myStateOne :stateTwo=myStateTwo .../>
           </template>
