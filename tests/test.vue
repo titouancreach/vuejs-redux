@@ -1,10 +1,13 @@
-module.exports = {
-  render(h) {
-    return h('div');
-  },
+<template>
+  <div />
+</template>
+
+<script>
+export default {
   props: {
     myState: {
       required: true
     }
   }
 };
+</script>
