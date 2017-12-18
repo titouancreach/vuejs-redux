@@ -16,7 +16,7 @@
   import Provider from '../bundle.js';
   import testComponent from './test.vue';
 
-  const exampleReducer = (state = { foo: 'bar' }, actions) => actions;
+  const exampleReducer = (state = { foo: 'bar' }, actions) => state;
 
   export default {
 
