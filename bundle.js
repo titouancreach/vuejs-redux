@@ -39,7 +39,12 @@ var index = {
   },
 
   render() {
-    return this.$scopedSlots.default(_extends({}, this.actions, this.state))[0];
+    const nodes = this.$scopedSlots.default(_extends({}, this.actions, this.state));
+    if (Array.isArray(nodes)) {
+      return nodes[0];
+    } else {
+      return nodes;
+    }
   }
 };
 

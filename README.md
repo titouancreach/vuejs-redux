@@ -129,6 +129,19 @@ And finally our Counter component.
 
 Our Counter component is not aware we are using redux.
 
+If you use JSX, you can use the same syntax as React render props. (More elegant IMO)
+```jsx
+render(h) {
+    return (
+      <Provider mapDispatchToProps={this.mapDispatchToProps} mapStateToProps={this.mapStateToProps} store={this.store}>
+        {({actions, counterValue}) => (
+          <Counter counterValue={counterValue} actions={actions} title={this.title} />
+        )}
+      </Provider>
+    );
+  },
+```
+
 # Multiple store
 
 You can combine multiple store if needed. Just use the Provider component multiple time.
@@ -155,6 +168,7 @@ You can obviously create an helper component or whatever to compose this.
     </Provider
 </template>
 ```
+
 
 
 # CONTRIBUTING
