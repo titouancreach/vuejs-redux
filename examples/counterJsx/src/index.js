@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import CounterProvider from './Components/CounterProvider.vue';
+import CounterProvider from './Components/CounterProvider.jsx';
 
 new Vue({
   components: {CounterProvider},

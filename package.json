@@ -1,6 +1,6 @@
 {
   "name": "vuejs-redux",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "scripts": {
     "test": "NODE_ENV=testing jest",
     "build": "NODE_ENV=production && ./node_modules/.bin/rollup --config rollup.config.js",
@@ -20,18 +20,19 @@
     "rollup": "^0.51.8",
     "rollup-plugin-babel": "^3.0.2",
     "vue": "^2.5.8",
-    "vue-jest": "^1.1.0"
+    "vue-jest": "^1.1.0",
+    "vue-loader": "^13.6.0",
+    "vue-template-compiler": "^2.5.11"
   },
   "jest": {
     "moduleFileExtensions": [
       "js",
       "vue"
-    ]
+    ],
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
+    }
   },
-  "transform": {
-    "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-    ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
-  },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
