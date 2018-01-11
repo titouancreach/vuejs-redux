@@ -1,6 +1,6 @@
 {
   "name": "vuejs-redux",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "scripts": {
     "test": "NODE_ENV=testing jest",
     "build": "NODE_ENV=production && ./node_modules/.bin/rollup --config rollup.config.js",
