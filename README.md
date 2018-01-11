@@ -21,6 +21,7 @@ Why you should use it:
   - Not polluated `data` (you can use the power of the `functional component`)
   - Debuggable in the vue devtool browser extension.
   - Elegant JSX syntax
+  - I use this plugin daily (I fix issues as they open) 
 
     
 # Install
