@@ -24,13 +24,14 @@ var index = {
   },
 
   data: ctx => ({
-    state: _extends({}, ctx.mapStateToProps(ctx.store.getState())),
+    state: ctx.store.getState(),
+
     actions: _extends({}, ctx.mapDispatchToProps(ctx.store.dispatch))
   }),
 
   created() {
     this.unsubscribe = this.store.subscribe(() => {
-      this.state = this.mapStateToProps(this.store.getState());
+      this.state = this.store.getState();
     });
   },
 
@@ -39,7 +40,7 @@ var index = {
   },
 
   render() {
-    const nodes = this.$scopedSlots.default(_extends({}, this.actions, this.state));
+    const nodes = this.$scopedSlots.default(_extends({}, this.actions, this.mapStateToProps(this.state)));
     if (Array.isArray(nodes)) {
       return nodes[0];
     } else {

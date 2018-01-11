@@ -20,9 +20,8 @@ export default {
   },
 
   data: (ctx) => ({
-    state: {
-      ...ctx.mapStateToProps(ctx.store.getState()),
-    },
+    state: ctx.store.getState(),
+    
     actions: {
       ...ctx.mapDispatchToProps(ctx.store.dispatch),
     },
@@ -30,7 +29,7 @@ export default {
 
   created() {
     this.unsubscribe = this.store.subscribe(() => {
-      this.state = this.mapStateToProps(this.store.getState());
+      this.state = this.store.getState();
     });
   },
 
@@ -39,7 +38,7 @@ export default {
   },
 
   render() {
-    const nodes = this.$scopedSlots.default({...this.actions, ...this.state});
+    const nodes = this.$scopedSlots.default({...this.actions, ...this.mapStateToProps(this.state)});
     if (Array.isArray(nodes)) {
       return nodes[0];
     } else {
