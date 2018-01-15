@@ -21,10 +21,6 @@ export default {
 
   data: (ctx) => ({
     state: ctx.store.getState(),
-    
-    actions: {
-      ...ctx.mapDispatchToProps(ctx.store.dispatch),
-    },
   }),
 
   created() {
@@ -38,7 +34,7 @@ export default {
   },
 
   render() {
-    const nodes = this.$scopedSlots.default({...this.actions, ...this.mapStateToProps(this.state)});
+    const nodes = this.$scopedSlots.default({...this.mapDispatchToProps(this.store.dispatch), ...this.mapStateToProps(this.state)});
     if (Array.isArray(nodes)) {
       return nodes[0];
     } else {
