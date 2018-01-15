@@ -24,9 +24,7 @@ var index = {
   },
 
   data: ctx => ({
-    state: ctx.store.getState(),
-
-    actions: _extends({}, ctx.mapDispatchToProps(ctx.store.dispatch))
+    state: ctx.store.getState()
   }),
 
   created() {
@@ -40,7 +38,7 @@ var index = {
   },
 
   render() {
-    const nodes = this.$scopedSlots.default(_extends({}, this.actions, this.mapStateToProps(this.state)));
+    const nodes = this.$scopedSlots.default(_extends({}, this.mapDispatchToProps(this.store.dispatch), this.mapStateToProps(this.state)));
     if (Array.isArray(nodes)) {
       return nodes[0];
     } else {
