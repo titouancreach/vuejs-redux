@@ -2,37 +2,36 @@
 [![npm version](https://badge.fury.io/js/vuejs-redux.svg)](https://badge.fury.io/js/vuejs-redux)
 
 ## Description
-Simple binding between Vue and Redux.
-This allows to use multiple store if needed.
-This work in the same way as render props in react. It use Scoped Slot. read [my article about it](https://medium.com/@titouan.creach_44544/emulate-render-props-in-vuejs-c14086dc8dfa)
+Simple binding between Vue and Redux, allowing use of multiple stores.
+This works in the same way as render props in React. It uses Scoped Slot - [read my article about it](https://medium.com/@titouan.creach_44544/emulate-render-props-in-vuejs-c14086dc8dfa).
 
-Note:
-The previous version was using HOC. This version use Scoped slots instead.
-No more magic with the connect methods. Everything is explicit. It will prevent props collision
-and a [ugly trick with the render function](https://github.com/vuejs/vue/issues/6201).
+*Note:*
+The previous version was using Higher Order Components (HOC); this version uses Scoped slots instead.
+No more magic with the connect methods! Everything is explicit. This helps prevent prop collision and having to use [ugly tricks with the render function](https://github.com/vuejs/vue/issues/6201).
 
 Why you should use it:
 
-  - 45 lines of code (Easy to read/understand), easy to extend.
+  - Just 45 lines of code.
+  - 0 dependencies.
+  - Easy to read, understand, and extend.
   - Same API as [react-redux](https://github.com/reactjs/react-redux).
-  - Combine multiple Provider to be hydrated from multiple sources.
+  - Combine multiple Providers to be populated by multiple sources.
   - No hard coded dependencies between 'Vue' and the store, so more composable.
-  - 0 dependency
-  - Not polluated `data` (you can use the power of the `functional component`)
-  - Debuggable in the vue devtool browser extension.
-  - Elegant JSX syntax
-  - I use this plugin daily (I fix issues as they open) 
+  - Doesn't polluate `data`, so you can use the power of the `functional component`
+  - Debuggable in the [Vue devtool browser extension](https://github.com/vuejs/vue-devtools).
+  - Elegant JSX syntax.
+  - I use this plugin daily (I fix issues as they open).
 
-    
+
 # Install
-  
+
   ```
   npm install --save vuejs-redux
   ```
 
 # Counter example
 
-Let's build a simple counter app. (The full code can be found in the `example/` directory.
+Let's build a simple counter app. The full code can be found in the `example/` directory.
 
 Start with our reducer:
 
@@ -50,7 +49,8 @@ export function counter(state = 0, action) {
   }
 }
 ```
- And create the action creators in order to update our state.
+
+Create the action creators in order to update our state:
 
 ```javascript
 export function increment() {
@@ -66,17 +66,18 @@ export function reset() {
 }
 ```
 
-We can now create the CounterProvider Component. It act as a Provider for our CounterComponent
+We can now create the CounterProvider component. It acts as a Provider for our CounterComponent:
 
 ```vue
 <template>
   <Provider :mapDispatchToProps="mapDispatchToProps" :mapStateToProps="mapStateToProps" :store="store">
-    <template slot-scope="{counterValue, actions}"> <!-- We our state via slot-scope. Passing down the props to the component is no more hidden -->
+    <template slot-scope="{counterValue, actions}"> <!-- We pass our state via slot-scope. Passing down the props to the component is no more hidden -->
       <Counter :counterValue="counterValue" :actions="actions" :title="title" /> <!-- explicitly pass other props (title) -->
     </template>
   </Provider>
 </template>
 ```
+
 ```javascript
 import { createStore, bindActionCreators } from 'redux';
 import Provider from 'vuejs-redux';
@@ -109,7 +110,7 @@ export default {
 }
 ```
 
-And finally our Counter component.
+And finally our Counter component:
 
 ```vue
 <template functional> <!-- we can use functional component -->
@@ -131,7 +132,8 @@ And finally our Counter component.
 
 Our Counter component is not aware we are using redux.
 
-If you use JSX, you can use the same syntax as React render props. (More elegant IMO)
+If you use JSX, you can use the same syntax as React render props:
+
 ```jsx
 render(h) {
     return (
@@ -144,10 +146,9 @@ render(h) {
   },
 ```
 
-# Multiple store
+# Multiple stores
 
-You can combine multiple store if needed. Just use the Provider component multiple time.
-You can obviously create an helper component or whatever to compose this.
+You can combine multiple stores if needed - just use the Provider component multiple times. You can create an helper component to compose this:
 
 ```vue
 <template>
@@ -171,7 +172,7 @@ You can obviously create an helper component or whatever to compose this.
 </template>
 ```
 
-This is plugin is compatible with [rematch](https://github.com/rematch/rematch): [live example](https://codesandbox.io/s/n3373olqo0)
+This is plugin is compatible with [rematch](https://github.com/rematch/rematch)([live example](https://codesandbox.io/s/n3373olqo0))
 
 
 # CONTRIBUTING
