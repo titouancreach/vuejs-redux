@@ -18,26 +18,25 @@
 </template>
 
 <script>
-  import { createStore, bindActionCreators } from 'redux';
-  import Provider from '../bundle.js';
-  import testComponent from './testTwoStore.vue';
+import {createStore, bindActionCreators} from 'redux'
+import Provider from '../bundle.js'
+import testComponent from './testTwoStore.vue'
 
-  const exampleReducerOne = (state = { foo: 'bar' }, actions) => state;
-  const exampleReducerTwo = (state = { foo: 'baz' }, actions) => state;
+const exampleReducerOne = (state = {foo: 'bar'}, actions) => state
+const exampleReducerTwo = (state = {foo: 'baz'}, actions) => state
 
-  export default {
+export default {
+  methods: {
+    mapStateToPropsOne: state => ({myStateOne: state}),
+    mapStateToPropsTwo: state => ({myStateTwo: state}),
+    mapDispatchToProps: dispatch => ({}),
+  },
 
-    methods: {
-      mapStateToPropsOne: (state) => ({myStateOne: state}),
-      mapStateToPropsTwo: (state) => ({myStateTwo: state}),
-      mapDispatchToProps: (dispatch) => ({})
-    },
+  data: ctx => ({
+    storeOne: createStore(exampleReducerOne),
+    storeTwo: createStore(exampleReducerTwo),
+  }),
 
-    data: (ctx) => ({
-      storeOne: createStore(exampleReducerOne),
-      storeTwo: createStore(exampleReducerTwo)
-    }),
-
-    components: { Provider, testComponent }
-  };
+  components: {Provider, testComponent},
+}
 </script>
