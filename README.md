@@ -2,14 +2,13 @@
 [![npm version](https://badge.fury.io/js/vuejs-redux.svg)](https://badge.fury.io/js/vuejs-redux)
 
 ## Description
-Simple binding between Vue and Redux.
-This allows to use multiple store if needed.
-This work in the same way as render props in react. It use Scoped Slot. read [my article about it](https://medium.com/@titouan.creach_44544/emulate-render-props-in-vuejs-c14086dc8dfa)
+It is a simple binding between Vue and Redux which allows the developer to use multiple stores if needed.
+It works, in the same way, like render props does in React. It uses the Scoped Slot. You can read [my article about it](https://medium.com/@titouan.creach_44544/emulate-render-props-in-vuejs-c14086dc8dfa)
 
 Note:
-The previous version was using HOC. This version use Scoped slots instead.
-No more magic with the connect methods. Everything is explicit. It will prevent props collision
-and a [ugly trick with the render function](https://github.com/vuejs/vue/issues/6201).
+The previous version was using HOC. This version uses the Scoped slots instead.
+No more magic with the connect methods. Everything is explicit which will prevent props collision
+and an [ugly trick with the render function](https://github.com/vuejs/vue/issues/6201).
 
 Why you should use it:
 
@@ -18,8 +17,8 @@ Why you should use it:
   - Combine multiple Provider to be hydrated from multiple sources.
   - No hard coded dependencies between 'Vue' and the store, so more composable.
   - 0 dependency
-  - Not polluated `data` (you can use the power of the `functional component`)
-  - Debuggable in the vue devtool browser extension.
+  - Not polluted `data` (you can use the power of the `functional component`)
+  - Debuggable in the Vue devtool browser extension.
   - Elegant JSX syntax
   - I use this plugin daily (I fix issues as they open) 
 
@@ -66,7 +65,7 @@ export function reset() {
 }
 ```
 
-We can now create the CounterProvider Component. It act as a Provider for our CounterComponent
+We can now create the CounterProvider Component. It acts as a Provider for our CounterComponent
 
 ```vue
 <template>
@@ -129,7 +128,7 @@ And finally our Counter component.
 </script>
 ```
 
-Our Counter component is not aware we are using redux.
+Our Counter component is not aware that we are using redux.
 
 If you use JSX, you can use the same syntax as React render props. (More elegant IMO)
 ```jsx
@@ -146,7 +145,7 @@ render(h) {
 
 # Multiple store
 
-You can combine multiple store if needed. Just use the Provider component multiple time.
+You can combine multiple store if needed, use the Provider component various times.
 You can obviously create an helper component or whatever to compose this.
 
 ```vue
@@ -171,7 +170,7 @@ You can obviously create an helper component or whatever to compose this.
 </template>
 ```
 
-This is plugin is compatible with [rematch](https://github.com/rematch/rematch): [live example](https://codesandbox.io/s/n3373olqo0)
+This plugin is compatible with [rematch](https://github.com/rematch/rematch): [live example](https://codesandbox.io/s/n3373olqo0)
 
 
 # CONTRIBUTING
