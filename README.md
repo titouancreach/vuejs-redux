@@ -11,11 +11,10 @@ The previous version was using Higher Order Components (HOC); this version uses 
 No more magic with the connect methods. Everything is explicit which will prevent props collision
 and an [ugly trick with the render function](https://github.com/vuejs/vue/issues/6201).
 
-
 Why you should use it:
 
   - Just 45 lines of code.
-  - 0 dependency
+  - No dependencies at all
   - Easy to read, understand, and extend.
   - Same API as [react-redux](https://github.com/reactjs/react-redux).
   - Combine multiple Providers to be populated by multiple sources.
@@ -23,7 +22,6 @@ Why you should use it:
   - Doesn't polluate `data`, so you can use the power of the `functional component`
   - Debuggable in the [Vue devtool browser extension](https://github.com/vuejs/vue-devtools).
   - Elegant JSX syntax.
-  - I use this plugin daily (I fix issues as they open).
 
 # Install
 
@@ -35,7 +33,7 @@ Why you should use it:
 
 Let's build a simple counter app. The full code can be found in the `example/` directory.
 
-Start with our reducer:
+Start with a reducer:
 
 ```javascript
 export function counter(state = 0, action) {
@@ -68,9 +66,7 @@ export function reset() {
 }
 ```
 
-
 We can now create the CounterProvider component. It acts as a Provider for our CounterComponent:
-
 
 ```vue
 <template>
@@ -182,10 +178,10 @@ This plugin is compatible with [rematch](https://github.com/rematch/rematch): [l
 # CONTRIBUTING
 
 Feel free to create issues or pull requests if needed.
+
 If you change some code, don't forget to run:
 ```bash
 npm run format
 ```
 before submitting a pull request.
-
 
