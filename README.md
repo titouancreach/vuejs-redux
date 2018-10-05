@@ -2,17 +2,20 @@
 [![npm version](https://badge.fury.io/js/vuejs-redux.svg)](https://badge.fury.io/js/vuejs-redux)
 
 ## Description
+
 Simple binding between Vue and Redux, allowing use of multiple stores.
-This works in the same way as render props in React. It uses Scoped Slot - [read my article about it](https://medium.com/@titouan.creach_44544/emulate-render-props-in-vuejs-c14086dc8dfa).
+It works, in the same way, like render props does in React. It uses Scoped Slot - [read my article about it](https://medium.com/@titouan.creach_44544/emulate-render-props-in-vuejs-c14086dc8dfa).
 
 *Note:*
 The previous version was using Higher Order Components (HOC); this version uses Scoped slots instead.
-No more magic with the connect methods! Everything is explicit. This helps prevent prop collision and having to use [ugly tricks with the render function](https://github.com/vuejs/vue/issues/6201).
+No more magic with the connect methods. Everything is explicit which will prevent props collision
+and an [ugly trick with the render function](https://github.com/vuejs/vue/issues/6201).
+
 
 Why you should use it:
 
   - Just 45 lines of code.
-  - 0 dependencies.
+  - 0 dependency
   - Easy to read, understand, and extend.
   - Same API as [react-redux](https://github.com/reactjs/react-redux).
   - Combine multiple Providers to be populated by multiple sources.
@@ -21,7 +24,6 @@ Why you should use it:
   - Debuggable in the [Vue devtool browser extension](https://github.com/vuejs/vue-devtools).
   - Elegant JSX syntax.
   - I use this plugin daily (I fix issues as they open).
-
 
 # Install
 
@@ -66,7 +68,9 @@ export function reset() {
 }
 ```
 
+
 We can now create the CounterProvider component. It acts as a Provider for our CounterComponent:
+
 
 ```vue
 <template>
@@ -130,7 +134,7 @@ And finally our Counter component:
 </script>
 ```
 
-Our Counter component is not aware we are using redux.
+Our Counter component is not aware that we are using redux.
 
 If you use JSX, you can use the same syntax as React render props:
 
@@ -148,7 +152,8 @@ render(h) {
 
 # Multiple stores
 
-You can combine multiple stores if needed - just use the Provider component multiple times. You can create an helper component to compose this:
+You can combine multiple store if needed, use the Provider component various times.
+You can obviously create an helper component or whatever to compose this.
 
 ```vue
 <template>
@@ -172,8 +177,7 @@ You can combine multiple stores if needed - just use the Provider component mult
 </template>
 ```
 
-This is plugin is compatible with [rematch](https://github.com/rematch/rematch)([live example](https://codesandbox.io/s/n3373olqo0))
-
+This plugin is compatible with [rematch](https://github.com/rematch/rematch): [live example](https://codesandbox.io/s/n3373olqo0)
 
 # CONTRIBUTING
 
