@@ -2,14 +2,12 @@
 [![npm version](https://badge.fury.io/js/vuejs-redux.svg)](https://badge.fury.io/js/vuejs-redux)
 
 ## Description
-Simple binding between Vue and Redux.
-This allows to use multiple store if needed.
-This work in the same way as render props in react. It use Scoped Slot. read [my article about it](https://medium.com/@titouan.creach_44544/emulate-render-props-in-vuejs-c14086dc8dfa)
+Simple integration between Vue.js and Redux. Helps to use multiple store if and when needed. Works in the same way as Render Props does in React. It uses Scoped Slot. [Reade my article about it](https://medium.com/@titouan.creach_44544/emulate-render-props-in-vuejs-c14086dc8dfa)
 
 Note:
-The previous version was using HOC. This version use Scoped slots instead.
-No more magic with the connect methods. Everything is explicit. It will prevent props collision
-and a [ugly trick with the render function](https://github.com/vuejs/vue/issues/6201).
+The previous version was made using HOC. This version uses Scoped slots instead.
+No more magic with the connect methods. Everything is explicit and will prevent props collision
+and an [ugly bug with the render function](https://github.com/vuejs/vue/issues/6201).
 
 Why you should use it:
 
@@ -17,12 +15,10 @@ Why you should use it:
   - Same API as [react-redux](https://github.com/reactjs/react-redux).
   - Combine multiple Provider to be hydrated from multiple sources.
   - No hard coded dependencies between 'Vue' and the store, so more composable.
-  - 0 dependency
-  - Not polluated `data` (you can use the power of the `functional component`)
+  - No dependencies at all
+  - Not polluted `data` (you can use the power of the `functional component`)
   - Debuggable in the vue devtool browser extension.
   - Elegant JSX syntax
-  - I use this plugin daily (I fix issues as they open) 
-
     
 # Install
   
@@ -34,7 +30,7 @@ Why you should use it:
 
 Let's build a simple counter app. (The full code can be found in the `example/` directory.
 
-Start with our reducer:
+Start with a reducer:
 
 ```javascript
 export function counter(state = 0, action) {
@@ -50,7 +46,7 @@ export function counter(state = 0, action) {
   }
 }
 ```
- And create the action creators in order to update our state.
+ And create the action creators in order to update our state:
 
 ```javascript
 export function increment() {
@@ -66,7 +62,7 @@ export function reset() {
 }
 ```
 
-We can now create the CounterProvider Component. It act as a Provider for our CounterComponent
+We can now create the CounterProvider Component. It act as a Provider for our CounterComponent:
 
 ```vue
 <template>
@@ -109,7 +105,7 @@ export default {
 }
 ```
 
-And finally our Counter component.
+And finally our Counter component:
 
 ```vue
 <template functional> <!-- we can use functional component -->
@@ -147,7 +143,7 @@ render(h) {
 # Multiple store
 
 You can combine multiple store if needed. Just use the Provider component multiple time.
-You can obviously create an helper component or whatever to compose this.
+You can obviously create a helper component to compose this.
 
 ```vue
 <template>
@@ -177,5 +173,3 @@ This is plugin is compatible with [rematch](https://github.com/rematch/rematch):
 # CONTRIBUTING
 
 Feel free to create issues or pull requests if needed.
-
-
