@@ -1,44 +1,46 @@
 export default {
-
   props: {
     mapDispatchToProps: {
       required: false,
       default: () => ({}),
-      type: Function
+      type: Function,
     },
 
     mapStateToProps: {
       required: false,
       default: () => ({}),
-      type: Function
+      type: Function,
     },
 
     store: {
       required: true,
-      type: Object
-    }
+      type: Object,
+    },
   },
 
-  data: (ctx) => ({
+  data: ctx => ({
     state: ctx.store.getState(),
   }),
 
   created() {
     this.unsubscribe = this.store.subscribe(() => {
-      this.state = this.store.getState();
-    });
+      this.state = this.store.getState()
+    })
   },
 
   destroyed() {
-    this.unsubscribe();
+    this.unsubscribe()
   },
 
   render() {
-    const nodes = this.$scopedSlots.default({...this.mapDispatchToProps(this.store.dispatch), ...this.mapStateToProps(this.state)});
+    const nodes = this.$scopedSlots.default({
+      ...this.mapDispatchToProps(this.store.dispatch),
+      ...this.mapStateToProps(this.state),
+    })
     if (Array.isArray(nodes)) {
-      return nodes[0];
+      return nodes[0]
     } else {
-      return nodes;
+      return nodes
     }
-  }
-};
+  },
+}
