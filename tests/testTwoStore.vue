@@ -3,14 +3,14 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      myStateOne: {
-        required: true
-      },
-      myStateTwo: {
-        required: true
-      }
-    }
-  };
+export default {
+  props: {
+    myStateOne: {
+      required: true,
+    },
+    myStateTwo: {
+      required: true,
+    },
+  },
+}
 </script>
