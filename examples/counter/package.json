@@ -17,6 +17,5 @@
     "redux": "^3.7.2",
     "vue": "^2.5.8"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
