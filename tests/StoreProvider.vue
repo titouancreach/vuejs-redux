@@ -12,23 +12,22 @@
 </template>
 
 <script>
-  import { createStore, bindActionCreators } from 'redux';
-  import Provider from '../bundle.js';
-  import testComponent from './test.vue';
+import {createStore, bindActionCreators} from 'redux'
+import Provider from '../bundle.js'
+import testComponent from './test.vue'
 
-  const exampleReducer = (state = { foo: 'bar' }, actions) => state;
+const exampleReducer = (state = {foo: 'bar'}, actions) => state
 
-  export default {
+export default {
+  methods: {
+    mapStateToProps: state => ({myState: state}),
+    mapDispatchToProps: dispatch => ({}),
+  },
 
-    methods: {
-      mapStateToProps: (state) => ({ myState: state }),
-      mapDispatchToProps: (dispatch) => ({})
-    },
+  data: ctx => ({
+    store: createStore(exampleReducer),
+  }),
 
-    data: (ctx) => ({
-      store: createStore(exampleReducer)
-    }),
-
-    components: { Provider, testComponent }
-  };
+  components: {Provider, testComponent},
+}
 </script>

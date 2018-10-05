@@ -4,7 +4,9 @@
   "scripts": {
     "test": "NODE_ENV=testing jest",
     "build": "NODE_ENV=production && ./node_modules/.bin/rollup --config rollup.config.js",
-    "prepublish": "yarn run build"
+    "prepublish": "yarn run build",
+    "format": "prettier --config ./.prettierrc.js --write './**/*.{js,vue}'",
+    "precommit": "lint-staged"
   },
   "description": "Simple but functional binding between vuejs and redux",
   "main": "bundle.js",
@@ -15,7 +17,10 @@
     "babel-core": "^6.26.0",
     "babel-jest": "^21.2.0",
     "babel-preset-stage-0": "^6.24.1",
+    "husky": "^1.1.1",
     "jest": "^21.2.1",
+    "lint-staged": "^7.3.0",
+    "prettier": "1.14.3",
     "redux": "^3.7.2",
     "rollup": "^0.51.8",
     "rollup-plugin-babel": "^3.0.2",
@@ -34,5 +39,11 @@
       ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
     }
   },
-  "dependencies": {}
+  "dependencies": {},
+  "lint-staged": {
+    "*.{js,vue}": [
+      "prettier --config ./.prettierrc.js --write",
+      "git add"
+    ]
+  }
 }
