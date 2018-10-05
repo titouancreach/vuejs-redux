@@ -1,11 +1,13 @@
+import {INCREMENT, DECREMENT, RESET} from './types'
+
 export function increment() {
-  return {type: 'INCREMENT'}
+  return {type: INCREMENT}
 }
 
 export function decrement() {
-  return {type: 'DECREMENT'}
+  return {type: DECREMENT}
 }
 
 export function reset() {
-  return {type: 'RESET'}
+  return {type: RESET}
 }
