@@ -6,8 +6,8 @@
 export default {
   props: {
     myState: {
-      required: true
-    }
-  }
-};
+      required: true,
+    },
+  },
+}
 </script>
