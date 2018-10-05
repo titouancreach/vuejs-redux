@@ -29,6 +29,14 @@ Why you should use it:
   npm install --save vuejs-redux
   ```
 
+# Running the example 
+
+  ```
+  cd examples/counter
+  npm install (or yarn install)
+  npm run dev / npm run build
+  ```
+
 # Counter example
 
 Let's build a simple counter app. The full code can be found in the `example/` directory.
