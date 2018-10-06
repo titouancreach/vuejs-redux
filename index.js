@@ -3,7 +3,7 @@ export default {
     mapDispatchToProps: {
       required: false,
       default: () => ({}),
-      type: Function,
+      type: Funct//make a mistake to test travis ion,
     },
 
     mapStateToProps: {
