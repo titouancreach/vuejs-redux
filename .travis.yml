@@ -3,3 +3,4 @@ language: node_js
 
 node_js:
   - '10'
+script: yarn && yarn test && pushd ./examples/counter && yarn && yarn build && popd && pushd ./examples/counterJsx && yarn && yarn build && popd
