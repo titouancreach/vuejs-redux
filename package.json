@@ -8,6 +8,7 @@
     "lint": "prettier --config ./.prettierrc.js  --list-different './**/*.{js,vue}'",
     "precommit": "lint-staged",
     "prepublish": "yarn run build",
+    "build:examples": "pushd ./examples/counter && npm i && npm run build && popd",
     "test": "yarn lint && yarn jest"
   },
   "description": "Simple but functional binding between vuejs and redux",
