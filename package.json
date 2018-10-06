@@ -14,8 +14,8 @@
   "author": "Titouan CREACH <titouan.creach@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-jest": "^21.2.0",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
     "babel-preset-stage-0": "^6.24.1",
     "husky": "^1.1.1",
     "jest": "^21.2.1",
