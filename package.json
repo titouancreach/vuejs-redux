@@ -9,7 +9,7 @@
     "precommit": "lint-staged",
     "prepublish": "yarn run build",
     "build:examples": "pushd ./examples/counter && npm i && npm run build && popd",
-    "test": "yarn lint && yarn jest"
+    "test": "yarn lint && yarn jest && yarn build:examples"
   },
   "description": "Simple but functional binding between vuejs and redux",
   "main": "bundle.js",
