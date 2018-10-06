@@ -180,9 +180,4 @@ This plugin is compatible with [rematch](https://github.com/rematch/rematch): [l
 
 Feel free to create issues or pull requests if needed.
 
-If you change some code, don't forget to run:
-```bash
-npm run format
-```
-before submitting a pull request.
 
