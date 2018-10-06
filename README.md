@@ -2,6 +2,7 @@
 [![npm version](https://badge.fury.io/js/vuejs-redux.svg)](https://badge.fury.io/js/vuejs-redux)
 [![Build Status](https://travis-ci.com/titouancreach/vuejs-redux.svg?branch=master)](https://travis-ci.com/titouancreach/vuejs-redux)
 [![GitHub contributors](https://img.shields.io/github/contributors/titouancreach/vuejs-redux.svg)](https://github.com/titouancreach/vuejs-redux/graphs/contributors/)
+[![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/titouancreach)
 
 ## Description
 
