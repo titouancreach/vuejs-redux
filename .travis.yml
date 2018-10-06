@@ -1,0 +1,5 @@
+# https://docs.travis-ci.com/user/getting-started/
+language: node_js
+
+node_js:
+  - '10'
