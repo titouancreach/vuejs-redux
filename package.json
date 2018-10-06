@@ -2,11 +2,13 @@
   "name": "vuejs-redux",
   "version": "2.2.0",
   "scripts": {
-    "test": "NODE_ENV=testing jest",
     "build": "NODE_ENV=production && ./node_modules/.bin/rollup --config rollup.config.js",
-    "prepublish": "yarn run build",
     "format": "prettier --config ./.prettierrc.js --write './**/*.{js,vue}'",
-    "precommit": "lint-staged"
+    "jest": "NODE_ENV=testing jest",
+    "lint": "prettier --config ./.prettierrc.js  --list-different './**/*.{js,vue}'",
+    "precommit": "lint-staged",
+    "prepublish": "yarn run build",
+    "test": "yarn lint && yarn jest"
   },
   "description": "Simple but functional binding between vuejs and redux",
   "main": "bundle.js",
