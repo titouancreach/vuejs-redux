@@ -20,16 +20,16 @@
     "babel-jest": "^23.6.0",
     "babel-preset-stage-0": "^6.24.1",
     "husky": "^1.1.1",
-    "jest": "^21.2.1",
+    "jest": "^23.6.0",
     "lint-staged": "^7.3.0",
     "prettier": "1.14.3",
     "redux": "^3.7.2",
-    "rollup": "^0.51.8",
+    "rollup": "^0.66.4",
     "rollup-plugin-babel": "^3.0.2",
-    "vue": "^2.5.8",
+    "vue": "^2.5.17",
     "vue-jest": "^1.1.0",
-    "vue-loader": "^13.6.0",
-    "vue-template-compiler": "^2.5.11"
+    "vue-loader": "^15.4.2",
+    "vue-template-compiler": "^2.5.17"
   },
   "jest": {
     "moduleFileExtensions": [
