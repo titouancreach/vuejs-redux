@@ -178,6 +178,12 @@ You can obviously create an helper component or whatever to compose this.
 
 This plugin is compatible with [rematch](https://github.com/rematch/rematch): [live example](https://codesandbox.io/s/n3373olqo0)
 
+# Live examples
+
+ - Counter: https://codesandbox.io/s/l9o83q28m
+
+ - Counter (jsx): https://codesandbox.io/s/konq1nzjxv
+ 
 # CONTRIBUTING
 
 Feel free to create issues or pull requests if needed.
