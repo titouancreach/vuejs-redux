@@ -12,6 +12,7 @@
   },
   "description": "Simple but functional binding between vuejs and redux",
   "main": "bundle.js",
+  "module": "bundle.es.js",
   "repository": "https://github.com/titouancreach/redux-vuejs",
   "author": "Titouan CREACH <titouan.creach@gmail.com>",
   "license": "MIT",
