@@ -4,13 +4,17 @@ var index = {
   props: {
     mapDispatchToProps: {
       required: false,
-      default: () => ({}),
+      default: function _default() {
+        return {};
+      },
       type: Function
     },
 
     mapStateToProps: {
       required: false,
-      default: () => ({}),
+      default: function _default() {
+        return {};
+      },
       type: Function
     },
 
@@ -20,22 +24,24 @@ var index = {
     }
   },
 
-  data: ctx => ({
-    state: ctx.store.getState()
-  }),
+  data: function data(ctx) {
+    return {
+      state: ctx.store.getState()
+    };
+  },
 
-  created() {
-    this.unsubscribe = this.store.subscribe(() => {
-      this.state = this.store.getState();
+  created: function created() {
+    var _this = this;
+
+    this.unsubscribe = this.store.subscribe(function () {
+      _this.state = _this.store.getState();
     });
   },
-
-  destroyed() {
+  destroyed: function destroyed() {
     this.unsubscribe();
   },
-
-  render() {
-    const nodes = this.$scopedSlots.default(_extends({}, this.mapDispatchToProps(this.store.dispatch), this.mapStateToProps(this.state)));
+  render: function render() {
+    var nodes = this.$scopedSlots.default(_extends({}, this.mapDispatchToProps(this.store.dispatch), this.mapStateToProps(this.state)));
     if (Array.isArray(nodes)) {
       return nodes[0];
     } else {
