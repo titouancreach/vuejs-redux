@@ -1,8 +1,13 @@
 {
-  "presets": ["stage-0"],
+  "presets": ["stage-0",["env", {
+    "targets": {
+      "ie": "11"
+    },
+    "modules": false
+  }]],
   "env": {
     "testing": {
-      "presets": ["stage-0", "env"]
+      "presets": ["stage-0","env"]
     }
   }
 }
