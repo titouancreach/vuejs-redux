@@ -4,7 +4,7 @@ import TwoStoreProvider from './TwoStoreProvider.vue'
 
 test('Test wrapper component', () => {
   const testProvider = {
-    components: {StoreProvider},
+    components: { StoreProvider },
     render: h => h(StoreProvider),
   }
 
@@ -13,7 +13,7 @@ test('Test wrapper component', () => {
 
 test('Test wrapper component', () => {
   const testProvider = {
-    components: {TwoStoreProvider},
+    components: { TwoStoreProvider },
     render: h => h(TwoStoreProvider),
   }
 
