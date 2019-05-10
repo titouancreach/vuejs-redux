@@ -229,6 +229,42 @@ export default {
 
 Checkout the [working example](https://codesandbox.io/s/ywr3vpzxnz)
 
+# Running the examples locally
+
+Sometimes, the examples in the repo are more up-to-date than the example in codesandbox.
+You can open an issue if you find a broken codesandbox example.
+
+To run the example locally, you need to switch to the example directory:
+
+```bash
+cd ./examples/counter
+```
+
+Install the dependencies with:
+
+```bash
+npm install # (or yarn)
+```
+
+Either build the example and serve the `dist` directory or start the dev mode (with hot reloading)
+
+```bash
+# Start the development mode
+npm start
+
+# Build
+npm run build
+```
+
+# Testing
+
+Unit testing is done with jest.
+To run the test:
+
+```
+npm test
+```
+
 # Rematch
 
 This plugin is compatible with [rematch](https://github.com/rematch/rematch): [live example](https://codesandbox.io/s/n3373olqo0)
