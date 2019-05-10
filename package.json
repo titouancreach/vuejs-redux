@@ -1,6 +1,6 @@
 {
   "name": "vuejs-redux",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "scripts": {
     "build": "NODE_ENV=production && rollup --config rollup.config.js",
     "format": "prettier --config ./.prettierrc.js --write './**/*.{js,vue}'",
