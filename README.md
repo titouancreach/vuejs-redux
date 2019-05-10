@@ -184,6 +184,8 @@ You can obviously create an helper component or whatever to compose this.
 </template>
 ```
 
+# Rematch
+
 This plugin is compatible with [rematch](https://github.com/rematch/rematch): [live example](https://codesandbox.io/s/n3373olqo0)
 
 # Live examples
