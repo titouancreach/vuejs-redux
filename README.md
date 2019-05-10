@@ -27,6 +27,22 @@ Why you should use it:
 - Debuggable in the [Vue devtool browser extension](https://github.com/vuejs/vue-devtools).
 - Elegant JSX syntax.
 
+# Table of Contents
+
+- [vuejs-redux](#vuejs-redux)
+  - [Description](#description)
+  - [Install](#install)
+  - [Counter example](#counter-example)
+  - [Multiple stores](#multiple-stores)
+  - [Avoid passing the store to every &lt;Provider ...&gt;](#avoid-passing-the-store-to-every-provider-)
+  - [Running the examples locally](#running-the-examples-locally)
+  - [Testing](#testing)
+  - [Rematch](#rematch)
+  - [Live examples](#live-examples)
+  - [CONTRIBUTING](#contributing)
+
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
+
 ## Install
 
 ```
