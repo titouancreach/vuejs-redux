@@ -184,6 +184,51 @@ You can obviously create an helper component or whatever to compose this.
 </template>
 ```
 
+# Avoid passing the store to every <Provider ...>
+
+Importing the store and passing it to every Provider can be a pain point. Hopefully,
+we can create a custom provider that receive `mapStateToProps` and `mapDispatchToProps` as props,
+imports the store, and call the vuejs-redux provider with the right parameters.
+
+Here is an example:
+
+CustomProvider.vue
+
+```vue
+<template>
+  <Provider
+    :mapDispatchToProps="mapDispatchToProps"
+    :mapStateToProps="mapStateToProps"
+    :store="store"
+  >
+    <template slot-scope="props">
+      <!--Retrieve the data from the provider -->
+      <slot v-bind="props"></slot>
+      <!-- forward the data to the scoped-slot -->
+    </template>
+  </Provider>
+</template>
+
+<script>
+import store from '../configure-store'
+import Provider from 'vuejs-redux'
+
+export default {
+  props: ['mapDispatchToProps', 'mapStateToProps'],
+
+  components: {
+    Provider,
+  },
+
+  data: () => ({
+    store,
+  }),
+}
+</script>
+```
+
+Checkout the [working example](https://codesandbox.io/s/vm9zq1746l)
+
 # Rematch
 
 This plugin is compatible with [rematch](https://github.com/rematch/rematch): [live example](https://codesandbox.io/s/n3373olqo0)
