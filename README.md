@@ -227,7 +227,7 @@ export default {
 </script>
 ```
 
-Checkout the [working example](https://codesandbox.io/s/vm9zq1746l)
+Checkout the [working example](https://codesandbox.io/s/ywr3vpzxnz)
 
 # Rematch
 
