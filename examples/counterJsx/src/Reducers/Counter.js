@@ -1,4 +1,4 @@
-import {INCREMENT, DECREMENT, RESET} from '../Actions/types'
+import { INCREMENT, DECREMENT, RESET } from '../Actions/types'
 
 export function counter(state = 0, action) {
   switch (action.type) {

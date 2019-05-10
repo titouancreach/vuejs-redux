@@ -5,15 +5,12 @@
   "author": "Titouan CREACH",
   "license": "MIT",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server",
-    "build": "./node_modules/.bin/webpack"
+    "start": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html"
   },
   "devDependencies": {
-    "html-webpack-plugin": "^2.30.1",
-    "vue-loader": "^13.5.0",
-    "vue-template-compiler": "^2.5.8",
-    "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.4",
+    "@babel/core": "^7.4.4",
+    "parcel-bundler": "^1.12.3",
     "redux": "^3.7.2",
     "vue": "^2.5.8"
   },

@@ -2,7 +2,7 @@
   "name": "vuejs-redux",
   "version": "2.3.1",
   "scripts": {
-    "build": "NODE_ENV=production && ./node_modules/.bin/rollup --config rollup.config.js",
+    "build": "NODE_ENV=production && rollup --config rollup.config.js",
     "format": "prettier --config ./.prettierrc.js --write './**/*.{js,vue}'",
     "jest": "NODE_ENV=testing jest",
     "lint": "prettier --config ./.prettierrc.js  --list-different './**/*.{js,vue}'",
@@ -10,28 +10,28 @@
     "prepublish": "yarn run build",
     "test": "yarn lint && yarn jest"
   },
-  "description": "Simple but functional binding between vuejs and redux",
+  "description": "Simple but functional binding between Vuejs and Redux",
   "main": "bundle.js",
   "module": "bundle.es.js",
-  "repository": "https://github.com/titouancreach/redux-vuejs",
+  "repository": "https://github.com/titouancreach/vuejs-redux",
   "author": "Titouan CREACH <titouan.creach@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-jest": "^23.6.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1",
-    "husky": "^1.1.1",
-    "jest": "^23.6.0",
-    "lint-staged": "^7.3.0",
-    "prettier": "1.14.3",
-    "redux": "^3.7.2",
-    "rollup": "^0.66.4",
-    "rollup-plugin-babel": "^3.0.2",
-    "vue": "^2.5.17",
-    "vue-jest": "^1.1.0",
-    "vue-loader": "^15.4.2",
-    "vue-template-compiler": "^2.5.17"
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "babel-jest": "^24.8.0",
+    "husky": "^2.2.0",
+    "jest": "^24.8.0",
+    "lint-staged": "^8.1.6",
+    "prettier": "1.17.0",
+    "redux": "^4.0.1",
+    "rollup": "^1.11.3",
+    "rollup-plugin-babel": "^4.3.2",
+    "vue": "^2.6.10",
+    "vue-jest": "^4.0.0-beta.2",
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.6.10"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -40,10 +40,9 @@
     ],
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
+      "^.+\\.vue$": "<rootDir>/node_modules/vue-jest"
     }
   },
-  "dependencies": {},
   "lint-staged": {
     "*.{js,vue}": [
       "prettier --config ./.prettierrc.js --write",
