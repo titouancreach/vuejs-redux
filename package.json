@@ -29,7 +29,7 @@
     "rollup": "^1.11.3",
     "rollup-plugin-babel": "^4.3.2",
     "vue": "^2.6.10",
-    "vue-jest": "^3.0.4",
+    "vue-jest": "^4.0.0-beta.2",
     "vue-loader": "^15.7.0",
     "vue-template-compiler": "^2.6.10"
   },
@@ -40,7 +40,7 @@
     ],
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
+      "^.+\\.vue$": "<rootDir>/node_modules/vue-jest"
     }
   },
   "lint-staged": {
