@@ -4,7 +4,7 @@
     :mapStateToProps="mapStateToProps"
     :store="store"
   >
-    <template slot-scope="{ counterValue, actions }">
+    <template #default="{ counterValue, actions }">
       <Counter :counterValue="counterValue" :actions="actions" :title="title" />
     </template>
   </Provider>
