@@ -7,7 +7,7 @@
 
 ## Description
 
-Simple binding between Vue and Redux, allowing use of multiple stores.
+Flexible binding between Vue and Redux, allowing use of multiple stores.
 It works, in the same way, like render props does in React. It uses Scoped Slot - [read my article about it](https://medium.com/@titouan.creach_44544/emulate-render-props-in-vuejs-c14086dc8dfa).
 
 _Note:_
