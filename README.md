@@ -201,7 +201,7 @@ CustomProvider.vue
     :mapStateToProps="mapStateToProps"
     :store="store"
   >
-    <template slot-scope="props">
+    <template #default="props">
       <!--Retrieve the data from the provider -->
       <slot v-bind="props"></slot>
       <!-- forward the data to the scoped-slot -->
