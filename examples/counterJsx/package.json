@@ -9,8 +9,6 @@
     "build": "parcel build ./src/index.html"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.4",
-    "@vue/babel-preset-jsx": "^1.0.0",
     "parcel-bundler": "^1.12.3",
     "redux": "^4.0.1",
     "vue": "^2.6.10"
