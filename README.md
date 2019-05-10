@@ -1,4 +1,5 @@
 # vuejs-redux
+
 [![npm version](https://badge.fury.io/js/vuejs-redux.svg)](https://badge.fury.io/js/vuejs-redux)
 [![Build Status](https://travis-ci.com/titouancreach/vuejs-redux.svg?branch=master)](https://travis-ci.com/titouancreach/vuejs-redux)
 [![GitHub contributors](https://img.shields.io/github/contributors/titouancreach/vuejs-redux.svg)](https://github.com/titouancreach/vuejs-redux/graphs/contributors/)
@@ -9,32 +10,32 @@
 Simple binding between Vue and Redux, allowing use of multiple stores.
 It works, in the same way, like render props does in React. It uses Scoped Slot - [read my article about it](https://medium.com/@titouan.creach_44544/emulate-render-props-in-vuejs-c14086dc8dfa).
 
-*Note:*
+_Note:_
 The previous version was using Higher Order Components (HOC); this version uses Scoped slots instead.
 No more magic with the connect methods. Everything is explicit which will prevent props collision
 and an [ugly trick with the render function](https://github.com/vuejs/vue/issues/6201).
 
 Why you should use it:
 
-  - Just 45 lines of code.
-  - No dependencies at all
-  - Easy to read, understand, and extend.
-  - Same API as [react-redux](https://github.com/reactjs/react-redux).
-  - Combine multiple Providers to be populated by multiple sources.
-  - No hard coded dependencies between 'Vue' and the store, so more composable.
-  - Doesn't polluate `data`, so you can use the power of the `functional component`
-  - Debuggable in the [Vue devtool browser extension](https://github.com/vuejs/vue-devtools).
-  - Elegant JSX syntax.
+- Just 45 lines of code.
+- No dependencies at all
+- Easy to read, understand, and extend.
+- Same API as [react-redux](https://github.com/reactjs/react-redux).
+- Combine multiple Providers to be populated by multiple sources.
+- No hard coded dependencies between 'Vue' and the store, so more composable.
+- Doesn't polluate `data`, so you can use the power of the `functional component`
+- Debuggable in the [Vue devtool browser extension](https://github.com/vuejs/vue-devtools).
+- Elegant JSX syntax.
 
 # Install
 
-  ```
-  npm install --save vuejs-redux
-  ```
+```
+npm install --save vuejs-redux
+```
 
 # Counter example
 
-Let's build a simple counter app. The full code can be found in the `example/` directory.
+Let's build a counter app. The full code can be found in the `example/` directory.
 
 Start with a reducer:
 
@@ -42,13 +43,13 @@ Start with a reducer:
 export function counter(state = 0, action) {
   switch (action.type) {
     case 'INCREMENT':
-      return state + 1;
+      return state + 1
     case 'DECREMENT':
-      return state - 1;
+      return state - 1
     case 'RESET':
-      return 0;
+      return 0
     default:
-      return state;
+      return state
   }
 }
 ```
@@ -57,11 +58,11 @@ Create the action creators in order to update our state:
 
 ```javascript
 export function increment() {
-  return { 'type': 'INCREMENT' };
+  return { type: 'INCREMENT' }
 }
 
 export function decrement() {
-  return { 'type': 'DECREMENT' };
+  return { type: 'DECREMENT' }
 }
 
 export function reset() {
@@ -73,67 +74,74 @@ We can now create the CounterProvider component. It acts as a Provider for our C
 
 ```vue
 <template>
-  <Provider :mapDispatchToProps="mapDispatchToProps" :mapStateToProps="mapStateToProps" :store="store">
-    <template slot-scope="{counterValue, actions}"> <!-- We pass our state via slot-scope. Passing down the props to the component is no more hidden -->
-      <Counter :counterValue="counterValue" :actions="actions" :title="title" /> <!-- explicitly pass other props (title) -->
+  <Provider
+    :mapDispatchToProps="mapDispatchToProps"
+    :mapStateToProps="mapStateToProps"
+    :store="store"
+  >
+    <template #default="{ counterValue, actions }">
+      <!-- the provider calls the default slot with the result of mapStateToProps and mapDispatchToProps -->
+      <Counter :counterValue="counterValue" :actions="actions" :title="title" />
+      <!-- explicitly pass other props (ex: title) -->
     </template>
   </Provider>
 </template>
-```
 
-```javascript
-import { createStore, bindActionCreators } from 'redux';
-import Provider from 'vuejs-redux';
-import * as Actions from '../Actions';
-import Counter from './Counter.vue';
-import { counter } from '../Reducers/Counter';
+<script>
+import Provider from 'vuejs-redux'
+
+import { createStore, bindActionCreators } from 'redux'
+import { counter } from '../Reducers/Counter'
+import * as Actions from '../Actions'
+
+import Counter from './Counter.vue'
 
 export default {
-
   methods: {
     mapStateToProps(state) {
-      return {counterValue: state}
+      return { counterValue: state }
     },
 
     mapDispatchToProps(dispatch) {
-      return {actions: bindActionCreators(Actions, dispatch)}
-    }
+      return { actions: bindActionCreators(Actions, dispatch) }
+    },
   },
 
   components: {
     Counter,
-    Provider
+    Provider,
   },
 
   data: () => ({
     store: createStore(counter),
-    title: 'Counter using vuejs-redux'
-  })
-
+    title: 'Counter using vuejs-redux',
+  }),
 }
+</script>
 ```
 
 And finally our Counter component:
 
 ```vue
-<template functional> <!-- we can use functional component -->
+<template functional>
+  <!-- we can use functional component -->
   <div>
-    <h1> Counter using vuejs-redux </h1>
-    <div> {{ counterValue }} </div>
-    <button @click="actions.increment()"> increment </button>
-    <button @click="actions.decrement()"> decrement </button>
-    <button @click="actions.reset()"> reset </button>
+    <h1>Counter using vuejs-redux</h1>
+    <div>{{ counterValue }}</div>
+    <button @click="actions.increment()">increment</button>
+    <button @click="actions.decrement()">decrement</button>
+    <button @click="actions.reset()">reset</button>
   </div>
 </template>
 
 <script>
-  export default {
-    props: ['actions', 'counterValue'] // provided by our Provider
-  };
+export default {
+  props: ['actions', 'counterValue'],
+}
 </script>
 ```
 
-Our Counter component is not aware that we are using redux.
+The Counter component is not aware that we are using redux.
 
 If you use JSX, you can use the same syntax as React render props:
 
@@ -160,13 +168,13 @@ You can obviously create an helper component or whatever to compose this.
     :store=storeOne
     :mapStateToProps=mapStateToPropsOne
     :mapDispatchToProps=mapDispatchToPropsOne>
-      <template slot-scope="{myStateOne, myActionOne}">
+      <template #default="{ myStateOne, myActionOne }">
         <!-- Use our second provider -->
         <Provider
           :store=storeTwo
           :mapStateToProps=mapStateToPropsTwo
           :mapDispatchToProps=mapDispatchToPropsTwo>
-          <template slot-scope="{myStateTwo, myActionTwo}">
+          <template #default="{ myStateTwo, myActionTwo }">
             <!-- render our component here -->
             <Child :stateOne=myStateOne :stateTwo=myStateTwo .../>
           </template>
@@ -180,12 +188,10 @@ This plugin is compatible with [rematch](https://github.com/rematch/rematch): [l
 
 # Live examples
 
- - Counter: https://codesandbox.io/s/l9o83q28m
+- Counter: https://codesandbox.io/s/l9o83q28m
 
- - Counter (jsx): https://codesandbox.io/s/konq1nzjxv
- 
+- Counter (jsx): https://codesandbox.io/s/konq1nzjxv
+
 # CONTRIBUTING
 
 Feel free to create issues or pull requests if needed.
-
-
