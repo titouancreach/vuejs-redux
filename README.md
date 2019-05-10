@@ -176,7 +176,7 @@ You can obviously create an helper component or whatever to compose this.
           :mapDispatchToProps=mapDispatchToPropsTwo>
           <template #default="{ myStateTwo, myActionTwo }">
             <!-- render our component here -->
-            <Child :stateOne=myStateOne :stateTwo=myStateTwo .../>
+            <Child :stateOne=myStateOne :stateTwo=myStateTwo />
           </template>
         </Provider>
       </template>
