@@ -27,13 +27,13 @@ Why you should use it:
 - Debuggable in the [Vue devtool browser extension](https://github.com/vuejs/vue-devtools).
 - Elegant JSX syntax.
 
-# Install
+## Install
 
 ```
 npm install --save vuejs-redux
 ```
 
-# Counter example
+## Counter example
 
 Let's build a counter app. The full code can be found in the `example/` directory.
 
@@ -157,7 +157,7 @@ render(h) {
   },
 ```
 
-# Multiple stores
+## Multiple stores
 
 You can combine multiple store if needed, use the Provider component various times.
 You can obviously create an helper component or whatever to compose this.
@@ -184,7 +184,7 @@ You can obviously create an helper component or whatever to compose this.
 </template>
 ```
 
-# Avoid passing the store to every <Provider ...>
+## Avoid passing the store to every <Provider ...>
 
 Importing the store and passing it to every Provider can be a pain point. Hopefully,
 we can create a custom provider that receive `mapStateToProps` and `mapDispatchToProps` as props,
@@ -229,7 +229,7 @@ export default {
 
 Checkout the [working example](https://codesandbox.io/s/ywr3vpzxnz)
 
-# Running the examples locally
+## Running the examples locally
 
 Sometimes, the examples in the repo are more up-to-date than the example in codesandbox.
 You can open an issue if you find a broken codesandbox example.
@@ -256,7 +256,7 @@ npm start
 npm run build
 ```
 
-# Testing
+## Testing
 
 Unit testing is done with jest.
 To run the test:
@@ -265,16 +265,16 @@ To run the test:
 npm test
 ```
 
-# Rematch
+## Rematch
 
 This plugin is compatible with [rematch](https://github.com/rematch/rematch): [live example](https://codesandbox.io/s/n3373olqo0)
 
-# Live examples
+## Live examples
 
 - Counter: https://codesandbox.io/s/l9o83q28m
 
 - Counter (jsx): https://codesandbox.io/s/konq1nzjxv
 
-# CONTRIBUTING
+## CONTRIBUTING
 
 Feel free to create issues or pull requests if needed.
