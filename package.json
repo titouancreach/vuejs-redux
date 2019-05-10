@@ -3,7 +3,7 @@
   "version": "2.4.1",
   "scripts": {
     "build": "NODE_ENV=production && rollup --config rollup.config.js",
-    "format": "prettier --config ./.prettierrc.js --write './**/*.{js,vue}'",
+    "format": "prettier --config ./.prettierrc.js --write './**/*.{js,vue,jsx}'",
     "jest": "NODE_ENV=testing jest",
     "lint": "prettier --config ./.prettierrc.js  --list-different './**/*.{js,vue}'",
     "precommit": "lint-staged",
