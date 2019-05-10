@@ -10,10 +10,10 @@
     "prepublish": "yarn run build",
     "test": "yarn lint && yarn jest"
   },
-  "description": "Simple but functional binding between vuejs and redux",
+  "description": "Simple but functional binding between Vuejs and Redux",
   "main": "bundle.js",
   "module": "bundle.es.js",
-  "repository": "https://github.com/titouancreach/redux-vuejs",
+  "repository": "https://github.com/titouancreach/vuejs-redux",
   "author": "Titouan CREACH <titouan.creach@gmail.com>",
   "license": "MIT",
   "devDependencies": {
