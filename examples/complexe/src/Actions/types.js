@@ -1,0 +1,5 @@
+export const INCREMENT = 'INCREMENT'
+export const DECREMENT = 'DECREMENT'
+export const RESET = 'RESET'
+export const OTHER = 'OTHER'
+export const OTHER_RESET = 'OTHER_RESET'
